@@ -1,0 +1,16 @@
+GET https://admin.preptimeanalytics.com/home-page 
+Content-Type: application/json
+
+###
+GET https://admin.preptimeanalytics.com/about-page 
+Content-Type: application/json
+
+
+###
+GET https://admin.preptimeanalytics.com/articles 
+Content-Type: application/json
+
+
+###
+GET https://admin.preptimeanalytics.com/articles/1
+Content-Type: application/json
