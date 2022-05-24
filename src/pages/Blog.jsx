@@ -20,7 +20,7 @@ const Blog = () => {
 
   return (
     <div>
-      <section className="bg-slate-light pt-12 md:pt-[150px] min-h-[80vh]">
+      <section className="sect-blog bg-slate-light pt-12 md:pt-[150px] min-h-[80vh]">
         <div className="max-w-default py-12 md:py-[30px] mx-6 lg:m-auto">
           <h1 className="font-bold text-5xl">All The Latest</h1>
           <hr className="my-3 border-black" />

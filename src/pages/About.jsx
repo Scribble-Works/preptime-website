@@ -15,7 +15,7 @@ import logo from "../assets/logos/PrepTime_analyser_logo.png";
 const SmallerGrid = ({ plan }) => {
   let navigate = useNavigate();
   return (
-    <div className="bg-white md:w-[24%] relative p-[32px] rounded-3xl min-h-full">
+    <div className="plan bg-white md:w-[24%] relative p-[32px] rounded-3xl min-h-full">
       <div>
         <div className="flex">
           <div className="flex items-center justify-center w-12 h-12 rounded-full bg-brand-pink">
@@ -33,7 +33,7 @@ const SmallerGrid = ({ plan }) => {
           dangerouslySetInnerHTML={{ __html: plan?.features[0]?.description }}
         />
 
-        <div className="mt-6">
+        <div className="pln-btn mt-6">
           <button
             className="flex items-center justify-center w-full py-4 transition-all duration-300 bg-white border-2 rounded-lg text-slate-blue border-slate-blue text-desktop-paragraph hover:bg-slate-blue hover:text-white"
             onClick={() => {
@@ -63,7 +63,7 @@ const About = () => {
 
   return (
     <div>
-      <section className="bg-gradient-to-r from-feeling-moody-start to-feeling-moody-end pt-12 md:pt-[150px]">
+      <section className="sect-about bg-gradient-to-r from-feeling-moody-start to-feeling-moody-end pt-12 md:pt-[150px]">
         <div className="max-w-default py-12 md:py-[30px] mx-6 lg:m-auto">
           <div className="md:w-7/12 space-y-7">
             <h1 className="font-medium leading-snug text-mobile-h2 md:text-desktop-h2">
@@ -121,7 +121,7 @@ const About = () => {
         </div>
 
         <section className="bg-slate-light font-dm-sans">
-          <div className="md:m-auto max-w-default py-12 md:py-[90px] mx-6">
+          <div className="main-cnt md:m-auto max-w-default py-12 md:py-[90px] mx-6">
             <div className="text-center">
               <h5 className="text-base font-bold uppercase text-slate-orange">
                 A plan for everyone
@@ -133,7 +133,7 @@ const About = () => {
               </div>
 
               <div className="mt-[60px]">
-                <div className="flex flex-col items-center justify-between space-4 text-left md:space-y-4 md:flex-row">
+                <div className="plans flex flex-col items-center justify-between space-4 text-left md:space-y-4 md:flex-row">
                   <SmallerGrid plan={aboutData?.plans[0]} />
                   <SmallerGrid plan={aboutData?.plans[1]} />
                   <SmallerGrid plan={aboutData?.plans[2]} />

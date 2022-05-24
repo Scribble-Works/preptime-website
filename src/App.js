@@ -14,6 +14,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import GetStarted from "./pages/GetStarted";
 import Contact from "./pages/Contact";
+import './assets/styles/app.css';
 
 const AppNavlink = ({ links }) =>
   links.map((link) => (

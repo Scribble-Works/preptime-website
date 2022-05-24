@@ -34,7 +34,14 @@ const PrimaryButton = () => {
 
 const GenerateImageSection = ({ homeData }) => (
   <div>
-    <img src={homeData?.feature[3]?.media[0]?.url} alt="" />
+    {
+      homeData?.feature[3]?.media[0]?.url ? 
+      <img
+        src={homeData?.feature[3]?.media[0]?.url}
+        alt={homeData?.feature[3]?.media[0]?.name}
+      /> :
+      <img className="max-h-[659px]" src={invoiceBanner} alt="" />
+    }
   </div>
 );
 const HighlightText = ({ homeData }) => {
@@ -61,7 +68,7 @@ const HighlightText = ({ homeData }) => {
   }, [homeData]);
 
   return (
-    <div className="md:w-1/2 md:px-[102px] h-full">
+    <div className="hgt-txt">
       <div className="flex items-center h-full">
         <div>
           <h2 className="font-medium w-[279px] md:w-auto m-auto text-center text-mobile-h2 md:text-desktop-h2 text-slate-headline md:text-left">
@@ -99,12 +106,13 @@ const HighlightText = ({ homeData }) => {
 };
 
 const ImageSection = ({ homeData }) => (
+  homeData?.feature[0]?.media[0] ?
   <img
     className="max-h-[659px]"
     src={homeData?.feature[0]?.media[0]?.url}
-    alt={homeData?.feature[0]?.media[0]?.url}
-  />
-  // <img className="max-h-[659px]" src={invoiceBanner} alt="" />
+    alt={homeData?.feature[0]?.media[0]?.name}
+  /> :
+  <img className="max-h-[659px]" src={invoiceBanner} alt="" />
 );
 
 const Hero4 = () => {
@@ -159,9 +167,9 @@ const Hero4 = () => {
   if (!homeData) return null;
 
   return (
-    <section className="bg-gradient-to-r from-feeling-moody-start to-feeling-moody-end pt-12 md:pt-[150px]">
+    <section className="sect-home bg-gradient-to-r from-feeling-moody-start to-feeling-moody-end pt-12 md:pt-[150px]">
       <section className="px-6 md:px-0">
-        <div className="m-auto max-w-default">
+        <div className="main-cnt m-auto max-w-default">
           <div className="flex flex-col items-center md:flex-row">
             <div className="w-full md:mr-[17px] order-2 md:order-1">
               <div className="mt-[48px] md:mt-0">
@@ -207,16 +215,16 @@ const Hero4 = () => {
         </div>
       </section>
       <section className="bg-slate-light font-dm-sans py-12 md:py-[90px] px-6 md:px-0">
-        <div className="m-auto max-w-default">
+        <div className="main-cnt m-auto max-w-default">
           <h2 className="text-mobile-h2 md:text-desktop-h2 font-medium text-slate-headline max-w-[558px] leading-tight">
             {homeData?.feature[1]?.name}
           </h2>
         </div>
-        <div className="mt-[60px]">
-          <div className="m-auto md:flex md:justify-between w-full max-w-default">
+        <div className="main-cnt mt-[60px]">
+          <div className="steps m-auto md:flex md:justify-between w-full max-w-default">
             {section2Steps.map((step, i) => {
               return (
-                <div key={i} className="md:max-w-[250px]">
+                <div key={i} className="step md:max-w-[250px]">
                   <div className="bg-white rounded-3xl py-9 px-[30px]">
                     <div className="flex items-center justify-center w-12 h-12 rounded-full bg-brand-pink text-white font-bold">
                       {i + 1}
@@ -234,14 +242,18 @@ const Hero4 = () => {
         </div>
       </section>
       <section className="bg-slate-light font-dm-sans py-12 md:py-[90px]">
-        <div className="mx-6 md:m-auto max-w-default rounded-3xl md:overflow-y-hidden">
-          <div className="items-center justify-center h-full md:flex">
+        <div className="main-cnt mx-6 md:m-auto max-w-default rounded-3xl md:overflow-y-hidden">
+          <div className="iy-rep items-center justify-center h-full md:flex">
             <HighlightText homeData={homeData} />
             <div className="relative mt-8 md:w-1/2 md:mt-0">
-              <img
-                src={homeData?.feature[2]?.media[0]?.url}
-                alt={homeData?.feature[2]?.media[0]?.url}
-              />
+              {
+                homeData?.feature[2]?.media[0]?.url ? 
+                <img
+                  src={homeData?.feature[2]?.media[0]?.url}
+                  alt={homeData?.feature[2]?.media[0]?.name}
+                /> :
+                <img className="max-h-[659px]" src={invoiceBanner} alt="" />
+              }
             </div>
           </div>
         </div>
@@ -249,7 +261,7 @@ const Hero4 = () => {
       {/* Section 4 */}
       <section>
         <div className="bg-slate-light font-dm-sans py-12 md:py-[90px] px-6 md:px-0">
-          <div className="m-auto max-w-default">
+          <div className="main-cnt m-auto max-w-default">
             <div className="flex flex-col md:flex-row">
               <div className="relative w-full">
                 <GenerateImageSection homeData={homeData} />
@@ -280,7 +292,7 @@ const Hero4 = () => {
       </section>
       {/* Footer  */}
       <footer className="bg-slate-light font-dm-sans">
-        <div className="py-6 mx-6 max-w-default md:m-auto">
+        <div className="main-cnt py-6 mx-6 max-w-default md:m-auto">
           <div className="items-center md:space-x-12 md:flex">
             <img className="h-12" src={logo} alt="logo" />
             <p className="mt-3 text-sm font-normal md:mt-0 md:w-1/3 text-slate-body">

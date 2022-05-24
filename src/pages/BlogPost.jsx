@@ -27,7 +27,7 @@ const BlogPost = () => {
 
   return (
     <div>
-      <section className="bg-slate-light pt-12 md:pt-[150px] min-h-[80vh]">
+      <section className="sect-blog bg-slate-light pt-12 md:pt-[150px] min-h-[80vh]">
         <div className="max-w-default py-12 md:py-[30px] mx-6 lg:m-auto">
           <div className="md:w-12/12 space-y-7">
             <h1 className="font-medium leading-snug text-mobile-h2 md:text-desktop-h2">
