@@ -15,7 +15,7 @@ import logo from "../assets/logos/PrepTime_analyser_logo.png";
 const GetStarted = () => {
   return (
     <div>
-      <section className="bg-slate-light  pt-12 md:pt-[150px] min-h-[80vh]">
+      <section className="get-started bg-slate-light  pt-12 md:pt-[150px] min-h-[80vh]">
         <div className="max-w-default py-12 md:py-[30px] mx-6 lg:m-auto">
           <div className="md:w-12/12 space-y-7">
             <h6>PrepTime Analyser Privacy Policy</h6>

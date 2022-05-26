@@ -97,7 +97,7 @@ const Register5 = () => {
             <Sidebar />
           </div>
           <div className="my-12 md:my-0 md:w-2/3 pt-[80px] md:pt-[120px] min-h-[80vh] ">
-            <div className="flex items-center justify-center h-full">
+            <div className="cntc-blk flex items-center justify-center h-full">
               <div className="md:w-[574px] w-full space-y-8">
                 <h1 className="font-medium text-[32px]"> Get In Touch </h1>
                 <InputWithLabel

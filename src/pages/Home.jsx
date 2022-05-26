@@ -23,7 +23,7 @@ const PrimaryButton = () => {
       <button
         className="w-full px-8 py-4 font-medium text-white rounded-lg font-dm-sans bg-brand-pink hover:opacity-90 text-desktop-paragraph md:w-auto"
         onClick={() => {
-          navigate("/contact");
+          navigate("/started");
         }}
       >
         Get Started For Free
@@ -327,7 +327,7 @@ const Hero4 = () => {
             </a>
           </div>
           <div className="flex justify-between">
-            <p> Copyright 2021 </p>
+            <p> Copyright 2022 </p>
 
             <div className="hidden md:flex space-x-4">
               <Link to="/about">

@@ -7,13 +7,22 @@ body {
 }
 
 .sect-about,
-.sect-blog {
+.sect-blog,
+.get-started {
     padding-top: 5rem !important;
+}
+
+.cntc-blk {
+    padding-top: 2rem !important;
 }
 
 .sect-home .main-cnt {
     width: min(100% - 2rem, 1300px);
     margin-inline: auto;
+}
+
+.my-12 {
+    margin-top: 0 !important;
 }
 
 .steps,
@@ -54,7 +63,8 @@ body {
 @media screen and (min-width: 768px) {
     .sect-home,
     .sect-about,
-    .sect-blog {
+    .sect-blog,
+    .get-started {
         padding-top: 10rem !important;
     }
 
