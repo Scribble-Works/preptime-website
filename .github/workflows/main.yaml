@@ -33,4 +33,5 @@ jobs:
         environment_name: ${{ secrets.AWS_EB_APPLICATION_ENVIRONMENT }}
         version_label: "ver-${{ github.sha }}"
         region: eu-west-1
+        use_existing_version_if_available: true
         # deployment_package: deploy.zip
