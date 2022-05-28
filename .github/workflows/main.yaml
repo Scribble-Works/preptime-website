@@ -20,7 +20,7 @@ jobs:
           echo 'REACT_APP_STRAPI_BASE_URI=${{secrets.REACT_APP_STRAPI_BASE_URI}}' >> .env
 
     - name: Generate deployment package
-      run: (cd deploy && zip -r deploy.zip ../* -x '*.git*')
+      run: (cd deploy && zip -r deploy.zip ../* -x '*.git*' && ls && cd ..)
       # run: zip -r deploy.zip . -x '*.git*' -J
       # run: git archive --format=zip HEAD > deploy.zip
 
