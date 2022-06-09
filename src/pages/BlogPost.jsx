@@ -81,7 +81,7 @@ const BlogPost = () => {
             </a>
           </div>
           <div className="flex justify-between">
-            <p> Copyright 2021 </p>
+            <p> Copyright 2022 </p>
 
             <div className="hidden md:flex space-x-4">
               <Link to="/about">
