@@ -16,8 +16,6 @@ import youtube from "../assets/footers/youtube.svg";
 import $ from "jquery";
 
 const PrimaryButton = () => {
-  const navigate = useNavigate();
-
   return (
     <div>
       <button
