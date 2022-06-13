@@ -16,14 +16,12 @@ import youtube from "../assets/footers/youtube.svg";
 import $ from "jquery";
 
 const PrimaryButton = () => {
-  const navigate = useNavigate();
-
   return (
     <div>
       <button
         className="w-full px-8 py-4 font-medium text-white rounded-lg font-dm-sans bg-brand-pink hover:opacity-90 text-desktop-paragraph md:w-auto"
         onClick={() => {
-          navigate("/started");
+          window.location.href = 'https://analysis.preptimeanalytics.com/picker';
         }}
       >
         Get Started For Free
