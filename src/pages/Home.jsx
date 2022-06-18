@@ -1,32 +1,22 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, Link, NavLink, useNavigate } from "react-router-dom";
 import { axiosStrapi } from "../utils/services";
-import ArrowRight from "@heroicons/react/solid/ArrowRightIcon";
-import DownloadIcon from "@heroicons/react/outline/DownloadIcon";
-import personImg from "../assets/heros/person1.svg";
-import menuLogo from "../assets/heros/menu.svg";
 import invoiceBanner from "../assets/heros/invoicedetailbanner.svg";
 import receiptSVG from "../assets/features/bookmark.svg";
 import greenTick from "../assets/features/greentick.svg";
-import logo from "../assets/logos/PrepTime_analyser_logo.png";
-import twitter from "../assets/footers/twitter.svg";
-import facebook from "../assets/footers/facebook.svg";
-import youtube from "../assets/footers/youtube.svg";
+import Footer from "../components/Footer";
 
 import $ from "jquery";
+import { Link } from "react-router-dom";
 
 const PrimaryButton = () => {
   return (
-    <div>
+    <Link to="/started">
       <button
         className="w-full px-8 py-4 font-medium text-white rounded-lg font-dm-sans bg-brand-pink hover:opacity-90 text-desktop-paragraph md:w-auto"
-        onClick={() => {
-          window.location.href = 'https://analysis.preptimeanalytics.com/picker';
-        }}
       >
         Get Started For Free
       </button>
-    </div>
+    </Link>
   );
 };
 
@@ -289,85 +279,7 @@ const Hero4 = () => {
         </div>
       </section>
       {/* Footer  */}
-      <footer className="bg-slate-light font-dm-sans">
-        <div className="main-cnt py-6 mx-6 max-w-default md:m-auto">
-          <div className="items-center md:space-x-12 md:flex">
-            <img className="h-12" src={logo} alt="logo" />
-            <p className="mt-3 text-sm font-normal md:mt-0 md:w-1/3 text-slate-body">
-              Preptime Analytics. Powered by Scribble Works
-            </p>
-          </div>
-          <hr className="my-6" />
-
-          <div className="flex md:hidden space-x-4 mb-4">
-            <Link to="/about">
-              <p className="text-base font-normal">About</p>
-            </Link>
-            <Link to="/contact">
-              <p className="text-base font-normal">Contact</p>
-            </Link>
-            <a
-              href="https://pt-analyser.scribbleworks.com.gh/privacy-policy"
-              target={"_blank"}
-              rel="noreferrer"
-            >
-              <p className="text-base font-normal">Privacy</p>
-            </a>
-            <a
-              href="https://pt-analyser.scribbleworks.com.gh/terms-of-service"
-              target={"_blank"}
-              rel="noreferrer"
-            >
-              <p className="text-base font-normal">Terms</p>
-            </a>
-            <a href="#" target={"_blank"}>
-              <p className="text-base font-normal">Feeback</p>
-            </a>
-          </div>
-          <div className="flex justify-between">
-            <p> Copyright 2022 </p>
-
-            <div className="hidden md:flex space-x-4">
-              <Link to="/about">
-                <p className="text-base font-normal">About</p>
-              </Link>
-              <Link to="/contact">
-                <p className="text-base font-normal">Contact</p>
-              </Link>
-              <a
-                href="https://pt-analyser.scribbleworks.com.gh/privacy-policy"
-                target={"_blank"}
-                rel="noreferrer"
-              >
-                <p className="text-base font-normal">Privacy</p>
-              </a>
-              <a
-                href="https://pt-analyser.scribbleworks.com.gh/terms-of-service"
-                target={"_blank"}
-                rel="noreferrer"
-              >
-                <p className="text-base font-normal">Terms</p>
-              </a>
-              <a href="#" target={"_blank"}>
-                <p className="text-base font-normal">Feeback</p>
-              </a>
-            </div>
-
-            <div className="flex space-x-10">
-              <img src={twitter} alt="twitter" />
-              <img src={facebook} alt="facebook" />
-
-              <a
-                href="https://www.youtube.com/embed/FOgfK-W1l14"
-                target={"_blank"}
-                rel="noreferrer"
-              >
-                <img className="h-full" src={youtube} alt="youtube" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </section>
   );
 };

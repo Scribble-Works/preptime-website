@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route, Link, NavLink } from "react-router-dom";
+import { Routes, Route, NavLink } from "react-router-dom";
 import XIcon from "@heroicons/react/outline/XIcon";
 
 import logo from "./assets/logos/PrepTime_analyser_logo.png";
@@ -7,14 +7,13 @@ import menuLogo from "./assets/heros/menu.svg";
 import About from "./pages/About";
 import Home from "./pages/Home";
 
-import twitter from "./assets/footers/twitter.svg";
-import facebook from "./assets/footers/facebook.svg";
-import youtube from "./assets/footers/youtube.svg";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import GetStarted from "./pages/GetStarted";
 import Contact from "./pages/Contact";
 import './assets/styles/app.css';
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 
 const AppNavlink = ({ links }) =>
   links.map((link) => (
@@ -124,6 +123,8 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="started" element={<GetStarted />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="privacy" element={<Privacy />} />
+        <Route path="terms" element={<Terms />} />
       </Routes>
     </div>
   );

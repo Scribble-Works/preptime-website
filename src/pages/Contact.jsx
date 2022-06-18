@@ -1,14 +1,9 @@
 import ArrowRightIcon from "@heroicons/react/outline/ArrowRightIcon";
-import MenuIcon from "@heroicons/react/outline/MenuAlt3Icon";
 
-import XIcon from "@heroicons/react/outline/XIcon";
 
 import { useState } from "react";
 
 import orangeBar from "../assets/logos/orangebar.svg";
-import twitter from "../assets/footers/twitter.svg";
-import facebook from "../assets/footers/facebook.svg";
-import youtube from "../assets/footers/youtube.svg";
 import { axiosStrapi } from "../utils/services";
 
 const InputWithLabel = ({ name, type, ...props }) => (

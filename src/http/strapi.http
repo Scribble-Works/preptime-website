@@ -5,6 +5,10 @@ Content-Type: application/json
 GET https://admin.preptimeanalytics.com/about-page 
 Content-Type: application/json
 
+###
+GET https://admin.preptimeanalytics.com/privacy-policy-page 
+Content-Type: application/json
+
 
 ###
 GET https://admin.preptimeanalytics.com/articles 
