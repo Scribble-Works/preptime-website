@@ -1,120 +1,83 @@
-import React, { useEffect, useState } from "react";
-import { Routes, Route, Link, NavLink, useParams } from "react-router-dom";
-import ArrowRight from "@heroicons/react/solid/ArrowRightIcon";
-import { axiosStrapi } from "../utils/services";
-import $ from "jquery";
-import CheckMark from "@heroicons/react/solid/CheckIcon";
-import { useNavigate } from "react-router-dom";
-import twitter from "../assets/footers/twitter.svg";
-import facebook from "../assets/footers/facebook.svg";
-import youtube from "../assets/footers/youtube.svg";
-import growth from "../assets/pricing-tables/growth.svg";
-import laptop from "../assets/images/analser2.png";
-import logo from "../assets/logos/PrepTime_analyser_logo.png";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
+import grades from '../assets/images/grades.svg';
+import arrowdown from '../assets/features/arrowdown.png';
 
 const GetStarted = () => {
+  const [subscribe, setSubscribe] = useState(false);
+  const [userType, setUserType] = useState('individual');
+
+  const toTitle = word => word[0].toUpperCase() + word.slice(1);
+
+  const submitForm = e => {
+    e.preventDefault()
+    window.location.href = 'https://analysis.preptimeanalytics.com/picker';
+  }
+
+  const toggleDropdown = _ => {
+    const dropdown = document.getElementById('userType');
+    dropdown.classList.toggle('active')
+  }
+
+  useEffect(_ => {
+    window.addEventListener('click', e => {
+      const dropdown = document.getElementById('userType');
+      if (dropdown) {
+        const target = e.target;
+        if (dropdown.contains(target))
+          return;
+        dropdown.classList.remove('active')
+      }
+    })
+  }, [])
+
   return (
     <div>
       <section className="get-started bg-slate-light  pt-12 md:pt-[150px] min-h-[80vh]">
         <div className="max-w-default py-12 md:py-[30px] mx-6 lg:m-auto">
-          <div className="md:w-12/12 space-y-7">
-            <h6>PrepTime Analyser Privacy Policy</h6>
-
-            <h3 className="text-2xl">
-              When you use our services, your're trusting us with your
-              information. We understand this is a big responsibility and work
-              to protect your information and pit you in control.
-            </h3>
-            <br></br>
-            <p>
-              This Privacy Policy is meant to help you understand what
-              information we collect, why we collect it and how you can update
-              it, manage, export and delete your information.
-            </p>
+          <div className="started-content">
+            <div className="fx-left">
+              <h1 className="std-title">Let's Get Started</h1>
+              <p className="subtext">PrepTime makes analyzing and reporting of assessments easy and simple. When you use our services, your're trusting us with your information. We understand this is a big responsibility and work to protect your information and pit you in control.</p>
+              <form className="start" onSubmit={submitForm}>
+                <div className="form-cnt">
+                  <label htmlFor="userType">I am using PrepTime Analytics as an:</label>
+                  <div className="dropdown" id="userType" onClick={toggleDropdown}>
+                    <span>{ toTitle(userType) }</span>
+                    <img src={arrowdown} alt="arrow down" />
+                    <ul className="droplist">
+                      <li onClick={_ => setUserType('individual')}>
+                        <span>Individual</span>
+                      </li>
+                      <li onClick={_ => setUserType('organization')}>
+                        <span>Organization</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <p className="subscribe-txt">This service is currently being piloted. To get our latest updates please;</p>
+                  <input type="checkbox" id="subscribe" onChange={e => setSubscribe(e.target.checked)} />
+                  <label htmlFor="subscribe">Subscribe to our news letters.</label>
+                  <p>Thank you.</p>
+                  <div className="submit">
+                    <button
+                      className="px-8 py-2 font-medium text-white rounded-lg font-dm-sans bg-brand-pink hover:opacity-90 text-desktop-paragraph md:w-auto"
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div className="fx-img-right">
+              <img src={grades} alt="grade analysis illustration" />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer  */}
-      <footer className="bg-slate-light font-dm-sans">
-        <div className="py-6 mx-6 max-w-default md:m-auto">
-          <div className="items-center md:space-x-12 md:flex">
-            <img className="h-12" src={logo} alt="logo" />
-            <p className="mt-3 text-sm font-normal md:mt-0 md:w-1/3 text-slate-body">
-              Preptime Analytics. Powered by Scribble Works
-            </p>
-          </div>
-          <hr className="my-6" />
-
-          <div className="flex md:hidden space-x-4 mb-4">
-            <Link to="/about">
-              <p className="text-base font-normal">About</p>
-            </Link>
-            <Link to="/contact">
-              <p className="text-base font-normal">Contact</p>
-            </Link>
-            <a
-              href="https://pt-analyser.scribbleworks.com.gh/privacy-policy"
-              target={"_blank"}
-              rel="noreferrer"
-            >
-              <p className="text-base font-normal">Privacy</p>
-            </a>
-            <a
-              href="https://pt-analyser.scribbleworks.com.gh/terms-of-service"
-              target={"_blank"}
-              rel="noreferrer"
-            >
-              <p className="text-base font-normal">Terms</p>
-            </a>
-            <a href="#" target={"_blank"}>
-              <p className="text-base font-normal">Feeback</p>
-            </a>
-          </div>
-          <div className="flex justify-between">
-            <p> Copyright 2022 </p>
-
-            <div className="hidden md:flex space-x-4">
-              <Link to="/about">
-                <p className="text-base font-normal">About</p>
-              </Link>
-              <Link to="/contact">
-                <p className="text-base font-normal">Contact</p>
-              </Link>
-              <a
-                href="https://pt-analyser.scribbleworks.com.gh/privacy-policy"
-                target={"_blank"}
-                rel="noreferrer"
-              >
-                <p className="text-base font-normal">Privacy</p>
-              </a>
-              <a
-                href="https://pt-analyser.scribbleworks.com.gh/terms-of-service"
-                target={"_blank"}
-                rel="noreferrer"
-              >
-                <p className="text-base font-normal">Terms</p>
-              </a>
-              <a href="#" target={"_blank"}>
-                <p className="text-base font-normal">Feeback</p>
-              </a>
-            </div>
-
-            <div className="flex space-x-10">
-              <img src={twitter} alt="twitter" />
-              <img src={facebook} alt="facebook" />
-
-              <a
-                href="https://www.youtube.com/embed/FOgfK-W1l14"
-                target={"_blank"}
-                rel="noreferrer"
-              >
-                <img className="h-full" src={youtube} alt="youtube" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

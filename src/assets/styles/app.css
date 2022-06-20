@@ -2,13 +2,19 @@ body {
     overflow-x: hidden !important;
 }
 
+.max-w-default {
+    max-width: initial !important;
+    width: min(100% - 2rem, 1140px);
+}
+
 .sect-home {
     padding-top: 7rem !important;
 }
 
 .sect-about,
 .sect-blog,
-.get-started {
+.get-started,
+.sect-pp {
     padding-top: 5rem !important;
 }
 
@@ -17,7 +23,7 @@ body {
 }
 
 .sect-home .main-cnt {
-    width: min(100% - 2rem, 1300px);
+    width: min(100% - 2rem, 1140px);
     margin-inline: auto;
 }
 
@@ -46,6 +52,7 @@ body {
     max-width: 280px;
     margin: 10px;
     height: max-content;
+    min-height: 250px;
 }
 
 .iy-rep {
@@ -58,13 +65,238 @@ body {
     margin-bottom: 3rem;
 }
 
+/* PRIVACY POLICY PAGE STYLING */
+.pnp-hero,
+.pp-cnt {
+    width: min(100% - 2rem, 1146px);
+    margin-inline: auto;
+}
+
+.pnp-hero {
+    padding: 2rem 0 0;
+    margin-bottom: 3rem;
+}
+
+.pp-cnt {
+    padding-bottom: 2rem;
+}
+
+.sect-cnt {
+    width: min(100%, 800px);
+}
+
+.pp-title {
+    margin-bottom: 1rem;
+}
+
+.pp-title h1 {
+    font-size: 1.7rem;
+}
+
+.pink {
+    color: #ff3f5f;
+}
+
+.main-txt {
+    padding: 1rem;
+    background: #fff;
+}
+
+.main-txt h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.main-txt p {
+    margin-bottom: 1rem;
+}
+
+.main-txt p:not(.ql-align-justify) {
+    margin: 0;
+}
+
+.main-txt ol + p:not(.ql-align-justify) {
+    display: none;
+}
+
+.main-txt ol {
+    list-style-type: disc;
+    margin: 1.5rem 0;
+    margin-left: 1rem;
+}
+
+.main-txt li {
+    margin-bottom: .5rem;
+}
+
+
+/* GET STARTED PAGE EXTRA STYLES */
+
+.started-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.fx-img-right {
+    margin-bottom: 2rem;
+    align-self: center;
+    max-width: 400px;
+}
+
+.std-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.fx-left .subtext {
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+}
+
+.fx-left .dropdown {
+    position: relative;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 5px 5px 15px rgba(0,0,0,.1),
+                -1px -1px 1px rgba(0,0,0,.01);
+    max-width: 200px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.fx-left .dropdown img {
+    width: 16px;
+    height: 16px;
+    transition: transform .3s ease;
+}
+
+.fx-left .dropdown.active img {
+    transform: rotateZ(180deg);
+}
+
+.fx-left .dropdown .droplist {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background: #fff;
+    box-shadow: 5px 5px 15px rgba(0,0,0,.1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: all .3s ease;
+}
+
+.fx-left .dropdown.active .droplist {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateY(0px);
+}
+
+label[for="userType"] {
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.droplist li {
+    padding: 12px;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    cursor: pointer;
+    user-select: none;
+    transition: all .3s ease;
+}
+
+.droplist li:hover {
+    color: #ff3f5f;
+    background: rgba(0,0,0,.07);
+}
+
+.fx-left .dropdown span,
+.fx-left .dropdown img {
+    user-select: none;
+}
+
+.subscribe-txt {
+    margin-bottom: 1rem;
+}
+
+#subscribe {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+label[for="subscribe"] {
+    position: relative;
+    user-select: none;
+    display: inline-block;
+    transform: translateX(1.5rem);
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+label[for="subscribe"]::before {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 17px;
+    height: 17px;
+    border-radius: 3px;
+    border: 1px solid #ff3f5f;
+    transition: all .3s ease;
+}
+
+label[for="subscribe"]::after {
+    content: '';
+    position: absolute;
+    left: -1.2rem;
+    top: 50%;
+    transform: translateY(-70%) rotate(40deg) scale(5);
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    width: 7px;
+    height: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .3s ease;
+}
+
+#subscribe:checked + label::before {
+    background-color: #ff3f5f;
+}
+
+#subscribe:checked + label::after {
+    transform: translateY(-70%) rotate(40deg) scale(1);
+    opacity: 1;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 0;
+}
 
 
 @media screen and (min-width: 768px) {
     .sect-home,
     .sect-about,
     .sect-blog,
-    .get-started {
+    .get-started,
+    .sect-pp {
         padding-top: 10rem !important;
     }
 
@@ -74,6 +306,36 @@ body {
 
     .hgt-txt {
         margin-right: 2rem;
+    }
+
+    .pp-title h1 {
+        font-size: 2rem;
+    }
+
+    .main-txt {
+        padding: 2rem;
+    }
+
+    .main-txt h1 {
+        font-size: 1.7rem;
+    }
+    
+    .main-txt p {
+        font-size: 1rem;
+    }
+
+    .started-content {
+        flex-direction: row;
+    }
+
+    .fx-img-right {
+        max-width: initial;
+        margin-left: 2rem;
+        align-self: flex-start;
+    }
+
+    .submit {
+        justify-content: flex-start;
     }
 }
 
@@ -90,17 +352,21 @@ body {
         margin-right: 5rem;
     }
 
-    .plans {
+    /* .plans {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-auto-rows: 1fr;
         grid-column-gap: 15px;
-    }
+    } */
 
     .plan {
         margin: 0;
         padding: 32px 20px;
-        height: 100%;
+    }
+
+    .plan > div {
+        width: 100%;
+        height: max-content;
     }
 
     .pln-btn {
@@ -109,5 +375,17 @@ body {
         bottom: -30px;
         transform: translateX(-50%);
         margin-top: 0;
+    }
+
+    .pp-title h1 {
+        font-size: 2.3rem;
+    }
+
+    .started-content {
+        margin-bottom: 5rem;
+    }
+
+    .std-title {
+        font-size: 2.3rem;
     }
 }
