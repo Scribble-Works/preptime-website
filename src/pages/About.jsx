@@ -127,11 +127,11 @@ const About = () => {
               </div>
 
               <div className="mt-[60px]">
-                <div className="plans flex flex-col items-center justify-between space-4 text-left md:space-y-4 md:flex-row">
+                <div className="plans flex flex-col items-center space-4 text-left md:space-y-4 md:flex-row">
                   <SmallerGrid plan={aboutData?.plans[0]} />
-                  <SmallerGrid plan={aboutData?.plans[1]} />
+                  {/* <SmallerGrid plan={aboutData?.plans[1]} />
                   <SmallerGrid plan={aboutData?.plans[2]} />
-                  <SmallerGrid plan={aboutData?.plans[3]} />
+                  <SmallerGrid plan={aboutData?.plans[3]} /> */}
                 </div>
               </div>
             </div>
