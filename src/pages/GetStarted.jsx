@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import grades from '../assets/images/grades.svg';
@@ -15,6 +15,23 @@ const GetStarted = () => {
     window.location.href = 'https://analysis.preptimeanalytics.com/picker';
   }
 
+  const toggleDropdown = _ => {
+    const dropdown = document.getElementById('userType');
+    dropdown.classList.toggle('active')
+  }
+
+  useEffect(_ => {
+    window.addEventListener('click', e => {
+      const dropdown = document.getElementById('userType');
+      if (dropdown) {
+        const target = e.target;
+        if (dropdown.contains(target))
+          return;
+        dropdown.classList.remove('active')
+      }
+    })
+  }, [])
+
   return (
     <div>
       <section className="get-started bg-slate-light  pt-12 md:pt-[150px] min-h-[80vh]">
@@ -26,7 +43,7 @@ const GetStarted = () => {
               <form className="start" onSubmit={submitForm}>
                 <div className="form-cnt">
                   <label htmlFor="userType">I am using PrepTime Analytics as an:</label>
-                  <div className="dropdown" id="userType">
+                  <div className="dropdown" id="userType" onClick={toggleDropdown}>
                     <span>{ toTitle(userType) }</span>
                     <img src={arrowdown} alt="arrow down" />
                     <ul className="droplist">
