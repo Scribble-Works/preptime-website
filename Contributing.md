@@ -29,7 +29,7 @@ Responses to posted issues may or may not be in the original language.
 ## [Pull Requests]
 
 Pull Requests are the way concrete changes are made to the code, documentation,
-dependencies, and tools contained in the `KeteCode/preptimeanalyser` repository.
+dependencies, and tools contained in the `Scribble-Works/preptime-website` repository.
 
 * Step 1: Fork
 * Step 2: Build
