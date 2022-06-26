@@ -9,7 +9,7 @@ propose changes to this document in a pull request.
 
 ## [Issues]
 
-Issues are created [here](https://github.com/KeteCode/preptimeanalyser/issues/new).
+Issues are created [here]([https://github.com/nathanfletcher/preptime-website/issues/new]).
 ### Issue Closure
 
 Bug reports will be closed if the issue has been inactive and the latest affected version no longer receives support.
