@@ -49,9 +49,6 @@ export default function Footer() {
             </div>
 
             <div className="flex space-x-10">
-                <img src={twitter} alt="twitter" />
-                <img src={facebook} alt="facebook" />
-
                 <a
                 href="https://www.youtube.com/embed/FOgfK-W1l14"
                 target={"_blank"}
