@@ -367,6 +367,12 @@ export default function Analysis() {
                         <h1 className="loading">Loading....</h1>
                     )
                 }
+                <div className="foot-note">
+                    <div className="foot-content">
+                        <p>Data source to this report is neither created nor endorsed by SWPH.</p>
+                        <p>&copy; 2022 -  <b>Scribble Works</b></p>
+                    </div>
+                </div>
             </div>
         </div>
     )

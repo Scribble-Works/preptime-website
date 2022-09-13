@@ -693,6 +693,20 @@ button.run:active {
     margin-top: 5px;
 }
 
+.foot-note {
+    width: 100%;
+    height: max-content;
+    padding: 15px 0;
+    background: #e2e2e2;
+}
+
+.foot-content {
+    width: min(100% - 20px, 1000px);
+    margin-inline: auto;
+    font-size: 14px;
+    text-align: center;
+}
+
 @media screen and (min-width: 600px) {
     .form-fields .input-grid {
         display: grid;
@@ -907,5 +921,9 @@ button.run:active {
 
     .meta-txt {
         font-size: 20px;
+    }
+
+    .foot-content {
+        font-size: 15px;
     }
 }
