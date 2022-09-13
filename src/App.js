@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { Routes, Route, NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, NavLink, useLocation } from "react-router-dom";
 import XIcon from "@heroicons/react/outline/XIcon";
 
 import logo from "./assets/logos/PrepTime_analyser_logo.png";
+import AppContextProvider from "./context";
 import menuLogo from "./assets/heros/menu.svg";
 import About from "./pages/About";
 import Home from "./pages/Home";
@@ -14,22 +15,26 @@ import Contact from "./pages/Contact";
 import './assets/styles/app.css';
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import Picker from './pages/Picker';
+import Analysis from "./pages/Analysis";
 
-const AppNavlink = ({ links }) =>
-  links.map((link) => (
-    <p key={link.url}>
-      <NavLink
-        to={link.url}
-        className={({ isActive }) =>
-          isActive
-            ? "font-medium transition-all duration-300 active:text-slate-blue"
-            : "font-medium transition-all duration-300 hover:text-slate-blue"
-        }
-      >
-        {link.name}
-      </NavLink>
-    </p>
-  ));
+const AppNavlink = ({ links, location }) =>
+  links.map(link => {
+    return location.pathname === '/picker' && link.url === '/started'  ? null : (
+        <p key={link.url}>
+          <NavLink
+            to={link.url}
+            className={({ isActive }) =>
+              isActive
+                ? "font-medium transition-all duration-300 active:text-slate-blue"
+                : "font-medium transition-all duration-300 hover:text-slate-blue"
+            }
+          >
+            {link.name}
+          </NavLink>
+        </p>
+       )
+  });
 
 const linkArray = [
   {
@@ -50,9 +55,9 @@ const linkArray = [
   },
 ];
 
-const Nav = ({ setShowMobileMenu }) => (
+const Nav = ({ setShowMobileMenu, location }) => (
   <nav>
-    <div className="px-6 pt-6 m-auto md:pt-[53px] max-w-default md:px-0">
+    <div className="pt-6 m-auto md:pt-[53px] max-w-default md:px-0">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <NavLink to="/">
@@ -64,7 +69,7 @@ const Nav = ({ setShowMobileMenu }) => (
           </NavLink>
           <div className="">
             <ul className="hidden ml-12 space-x-12 font-medium md:flex text-slate-headline">
-              <AppNavlink links={linkArray} />
+              <AppNavlink links={linkArray} location={location} />
             </ul>
           </div>
         </div>
@@ -81,7 +86,7 @@ const Nav = ({ setShowMobileMenu }) => (
   </nav>
 );
 
-const MobileMenu = ({ setShowMobileMenu }) => (
+const MobileMenu = ({ setShowMobileMenu, location }) => (
   <section className="md:hidden">
     <div className="absolute top-0 w-full min-h-[295px] p-2">
       <div className="w-full p-3 bg-gray-100 rounded-2xl border border-gray-300">
@@ -100,7 +105,7 @@ const MobileMenu = ({ setShowMobileMenu }) => (
         </div>
         <div>
           <ul className="mt-6 space-y-4">
-            <AppNavlink links={linkArray} />
+            <AppNavlink links={linkArray} location={location} />
           </ul>
         </div>
       </div>
@@ -110,11 +115,23 @@ const MobileMenu = ({ setShowMobileMenu }) => (
 
 function App() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  let location = useLocation();
+
+  useEffect(() => {
+    console.log(location.pathname)
+  }, [location])
+
   return (
     <div className="relative font-dm-sans w-full">
       <div className="absolute w-full bg-transparent">
-        <Nav setShowMobileMenu={setShowMobileMenu} />
-        {showMobileMenu && <MobileMenu setShowMobileMenu={setShowMobileMenu} />}
+        {
+          location.pathname.indexOf('/report/') < 0 ? (
+            <>
+              <Nav setShowMobileMenu={setShowMobileMenu} location={location} />
+              {showMobileMenu && <MobileMenu setShowMobileMenu={setShowMobileMenu} location={location} />}
+            </>
+          ) : null
+        }
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -122,6 +139,8 @@ function App() {
         <Route path="blog/:id" element={<BlogPost />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="started" element={<GetStarted />} />
+        <Route path="picker" element={<Picker />} />
+        <Route path="report/:id" element={<Analysis />} />
         <Route path="contact" element={<Contact />} />
         <Route path="privacy" element={<Privacy />} />
         <Route path="terms" element={<Terms />} />

@@ -1,0 +1,965 @@
+{
+    "title": "ICT (Responses)",
+    "sheet_id": "1cC0Nzdp5GRGB2i28-UjovZJXbdSZLB9j_-qeKU2jkCI",
+    "questions": [
+        {
+            "id": 1295323109,
+            "type": "TEXT",
+            "choices": null
+        },
+        {
+            "id": 2036641285,
+            "type": "TEXT",
+            "choices": null
+        },
+        {
+            "id": 923289579,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 3,
+            "title": "An example of computer application software include…..",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "Windows Vista",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Windows XP",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Microsoft Excel",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "Ubuntu",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 1557053946,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 4,
+            "title": "Floppy disk is a storage",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "Device",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "System",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Medium",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Capacity",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 1499553323,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 5,
+            "title": "Which of the following is the name of a code used to represent characters?",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "CPU",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "ALU",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "ISBN",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "ASCII",
+                    "isCorrectAnswer": true
+                }
+            ]
+        },
+        {
+            "id": 1540177488,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 6,
+            "title": "The content of a selected cell is shown in the",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "formula bar.",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "name box.",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "status bar",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "title bar",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 1229422529,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 7,
+            "title": " On which part of the computer screen does an icon appear by default?",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "right side",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "middle",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "left side",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "lower",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 2053106490,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 9,
+            "title": " Which of the following is odd among the group?",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "Monitor",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Printer",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Speaker",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Mouse",
+                    "isCorrectAnswer": true
+                }
+            ]
+        },
+        {
+            "id": 1871751616,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 10,
+            "title": "The software that enable users access web pages on the internet is called",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "browser",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "web site",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "access engine",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "search engine",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 976397077,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 11,
+            "title": "To switch off the computer, you are to first click………",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "shutdown",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "OK",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "display",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "start button",
+                    "isCorrectAnswer": true
+                }
+            ]
+        },
+        {
+            "id": 1518096388,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 12,
+            "title": "Which of the following statements best describe a computer operator? A person who",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "carries a computer from one location to the other to work.",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "obtains a degree in computer science and its related fields of study",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "operate the device which inputs and outputs data from the computer",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "Writes computer programs for a specific purpose.",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 65973273,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 13,
+            "title": "To switch off the computer, you are to first click….",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "shutdown",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "OK",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Display",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Start button",
+                    "isCorrectAnswer": true
+                }
+            ]
+        },
+        {
+            "id": 1484841521,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 15,
+            "title": "The top row keys can also be called the……",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "smart keys",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "qwerty keys",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "master keys",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "top keys",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 495963771,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 16,
+            "title": "The largest, fastest, most expensive type of computer is _____________ computer.",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "personal",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "server",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "super",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "main frame",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 1629107234,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 17,
+            "title": "Which of the following is a type of computer?",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "Micro computer",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Hybrid",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "Systematic display",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Displayable.",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 1959060925,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 18,
+            "title": " Which of the following is NOT a storage device?",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "DVD",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Hard disk",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Floppy disk",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Mouse",
+                    "isCorrectAnswer": true
+                }
+            ]
+        },
+        {
+            "id": 705579506,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 19,
+            "title": "Which of the following is the most likely source of a computer virus?",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "A Government website",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Internet downloading",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "Computer games",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Liverpool FC supporters",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 1021068888,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 21,
+            "title": "Which of the following devices will turn off first when shutting down the computer?",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "Monitor",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Stabilizer",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "System unit",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "Uninterruptible Power Supply",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 152519529,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 22,
+            "title": " What is the best way of protecting your computer from a virus?",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "Making sure it doesn’t heat",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Cover the computer when not in use",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Installing anti-virus software",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "Regular blowing of dust",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 1360832799,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 23,
+            "title": " Computer virus is capable of",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "maintain the computer system",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "making the work of the computer easy",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "slowing down the computer system performance",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "making the computer works faster",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 43868109,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 24,
+            "title": " A program on the computer which enables users to type their project works is the….",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "browser",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "spreadsheet",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "word processor",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "operating system",
+                    "isCorrectAnswer": false
+                }
+            ]
+        },
+        {
+            "id": 1822600104,
+            "type": "MULTIPLE_CHOICE",
+            "points": 1,
+            "index": 25,
+            "title": " CD-RW stands for…",
+            "answer": "",
+            "respFreq": "",
+            "respFreqString": "",
+            "choices": [
+                {
+                    "value": "Compact Disc Rewritable",
+                    "isCorrectAnswer": true
+                },
+                {
+                    "value": "Compact disc Rewind Wide",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Control Display Random Writable",
+                    "isCorrectAnswer": false
+                },
+                {
+                    "value": "Control Display Run Wide",
+                    "isCorrectAnswer": false
+                }
+            ]
+        }
+    ],
+    "created_at": "2022-09-07T21:25:06.512Z",
+    "metaData": {
+        "subject": "ICT",
+        "accademicYear": "2022",
+        "schoolName": "My School",
+        "class": "Form 2",
+        "sheetId": "1cC0Nzdp5GRGB2i28-UjovZJXbdSZLB9j_-qeKU2jkCI",
+        "collectsEmail": false,
+        "reportDate": "2022-09-07T21:25:06.821Z"
+    },
+    "dataMatrix": [
+        [
+            "Timestamp",
+            "Score",
+            "Full Name:",
+            "Index Number:",
+            "An example of computer application software include…..",
+            "Floppy disk is a storage",
+            "Which of the following is the name of a code used to represent characters?",
+            "The content of a selected cell is shown in the",
+            " On which part of the computer screen does an icon appear by default?",
+            " Which of the following is odd among the group?",
+            "The software that enable users access web pages on the internet is called",
+            "To switch off the computer, you are to first click………",
+            "Which of the following statements best describe a computer operator? A person who",
+            "To switch off the computer, you are to first click….",
+            "The top row keys can also be called the……",
+            "The largest, fastest, most expensive type of computer is _____________ computer.",
+            "Which of the following is a type of computer?",
+            " Which of the following is NOT a storage device?",
+            "Which of the following is the most likely source of a computer virus?",
+            "Which of the following devices will turn off first when shutting down the computer?",
+            " What is the best way of protecting your computer from a virus?",
+            " Computer virus is capable of",
+            " A program on the computer which enables users to type their project works is the….",
+            " CD-RW stands for…",
+            "",
+            "",
+            ""
+        ],
+        [
+            "2020-09-10T10:36:20.491Z",
+            20,
+            "Peki Blengo",
+            100000790,
+            "Microsoft Excel",
+            "Device",
+            "ASCII",
+            "formula bar.",
+            "left side",
+            "Mouse",
+            "browser",
+            "start button",
+            "operate the device which inputs and outputs data from the computer",
+            "Start button",
+            "qwerty keys",
+            "super",
+            "Hybrid",
+            "Mouse",
+            "Internet downloading",
+            "System unit",
+            "Installing anti-virus software",
+            "slowing down the computer system performance",
+            "word processor",
+            "Compact Disc Rewritable",
+            "",
+            "",
+            ""
+        ],
+        [
+            "2020-09-10T15:42:05.121Z",
+            18,
+            "Mamprobi",
+            9069335565,
+            "Microsoft Excel",
+            "Device",
+            "ASCII",
+            "formula bar.",
+            "left side",
+            "Mouse",
+            "browser",
+            "start button",
+            "operate the device which inputs and outputs data from the computer",
+            "Start button",
+            "qwerty keys",
+            "main frame",
+            "Hybrid",
+            "Mouse",
+            "Liverpool FC supporters",
+            "System unit",
+            "Installing anti-virus software",
+            "slowing down the computer system performance",
+            "word processor",
+            "Compact Disc Rewritable",
+            "",
+            "",
+            ""
+        ],
+        [
+            "2020-09-10T15:39:55.905Z",
+            17,
+            "Chorkor",
+            "0069693344",
+            "Microsoft Excel",
+            "Device",
+            "ASCII",
+            "formula bar.",
+            "left side",
+            "Mouse",
+            "browser",
+            "start button",
+            "operate the device which inputs and outputs data from the computer",
+            "Start button",
+            "qwerty keys",
+            "main frame",
+            "Hybrid",
+            "Mouse",
+            "Liverpool FC supporters",
+            "Monitor",
+            "Installing anti-virus software",
+            "slowing down the computer system performance",
+            "word processor",
+            "Compact Disc Rewritable",
+            "",
+            "",
+            ""
+        ],
+        [
+            "2020-09-10T10:30:58.593Z",
+            16,
+            "Kwadaso",
+            100000789,
+            "Microsoft Excel",
+            "Device",
+            "ISBN",
+            "title bar",
+            "left side",
+            "Mouse",
+            "browser",
+            "start button",
+            "operate the device which inputs and outputs data from the computer",
+            "Start button",
+            "smart keys",
+            "personal",
+            "Hybrid",
+            "Mouse",
+            "Internet downloading",
+            "System unit",
+            "Installing anti-virus software",
+            "slowing down the computer system performance",
+            "word processor",
+            "Compact Disc Rewritable",
+            "",
+            "",
+            ""
+        ],
+        [
+            "2020-09-10T10:42:18.667Z",
+            15,
+            "Senya Berekum",
+            100000912,
+            "Microsoft Excel",
+            "Device",
+            "ASCII",
+            "formula bar.",
+            "left side",
+            "Mouse",
+            "browser",
+            "start button",
+            "operate the device which inputs and outputs data from the computer",
+            "Start button",
+            "qwerty keys",
+            "super",
+            "Hybrid",
+            "Mouse",
+            "Internet downloading",
+            "Uninterruptible Power Supply",
+            "Regular blowing of dust",
+            "making the computer works faster",
+            "spreadsheet",
+            "Control Display Random Writable",
+            "",
+            "",
+            ""
+        ],
+        [
+            "2020-09-10T15:37:48.775Z",
+            12,
+            "Jerusalem Town",
+            "00999669912",
+            "Microsoft Excel",
+            "Device",
+            "ASCII",
+            "formula bar.",
+            "left side",
+            "Mouse",
+            "browser",
+            "start button",
+            "operate the device which inputs and outputs data from the computer",
+            "Start button",
+            "qwerty keys",
+            "server",
+            "Displayable.",
+            "Mouse",
+            "Liverpool FC supporters",
+            "Stabilizer",
+            "Cover the computer when not in use",
+            "making the work of the computer easy",
+            "operating system",
+            "Control Display Run Wide",
+            "",
+            "",
+            ""
+        ],
+        [
+            "2020-09-10T15:37:58.461Z",
+            12,
+            "Jerusalem Town",
+            "00999669912",
+            "Microsoft Excel",
+            "Device",
+            "ASCII",
+            "formula bar.",
+            "left side",
+            "Mouse",
+            "browser",
+            "start button",
+            "operate the device which inputs and outputs data from the computer",
+            "Start button",
+            "qwerty keys",
+            "server",
+            "Displayable.",
+            "Mouse",
+            "Liverpool FC supporters",
+            "Stabilizer",
+            "Cover the computer when not in use",
+            "making the work of the computer easy",
+            "operating system",
+            "Control Display Run Wide",
+            "",
+            "",
+            ""
+        ],
+        [
+            "2020-09-10T10:22:53.078Z",
+            9,
+            " Kukukrantumi",
+            "0020503056",
+            "Microsoft Excel",
+            "Device",
+            "ISBN",
+            "formula bar.",
+            "lower",
+            "Printer",
+            "browser",
+            "shutdown",
+            "obtains a degree in computer science and its related fields of study",
+            "shutdown",
+            "",
+            "personal",
+            "Systematic display",
+            "Hard disk",
+            "Internet downloading",
+            "System unit",
+            "Installing anti-virus software",
+            "slowing down the computer system performance",
+            "browser",
+            "Compact Disc Rewritable",
+            "",
+            "",
+            ""
+        ],
+        [
+            "2020-09-10T10:30:21.603Z",
+            8,
+            "Aburi",
+            "0256454880",
+            "Windows XP",
+            "Device",
+            "ASCII",
+            "name box.",
+            "middle",
+            "Printer",
+            "web site",
+            "display",
+            "obtains a degree in computer science and its related fields of study",
+            "Start button",
+            "qwerty keys",
+            "personal",
+            "Hybrid",
+            "Hard disk",
+            "Internet downloading",
+            "Stabilizer",
+            "Making sure it doesn’t heat",
+            "making the work of the computer easy",
+            "word processor",
+            "Compact Disc Rewritable",
+            "",
+            "",
+            ""
+        ],
+        [
+            "2020-09-10T13:53:05.876Z",
+            8,
+            "Aburi",
+            "0256454880",
+            "Windows XP",
+            "Device",
+            "ASCII",
+            "name box.",
+            "middle",
+            "Printer",
+            "web site",
+            "display",
+            "obtains a degree in computer science and its related fields of study",
+            "Start button",
+            "qwerty keys",
+            "personal",
+            "Hybrid",
+            "Hard disk",
+            "Internet downloading",
+            "Stabilizer",
+            "Making sure it doesn’t heat",
+            "making the work of the computer easy",
+            "word processor",
+            "Compact Disc Rewritable",
+            "",
+            "",
+            ""
+        ],
+        [
+            "2021-11-29T09:19:09.889Z",
+            8,
+            "Castro Agbo",
+            171111,
+            "Microsoft Excel",
+            "Device",
+            "ASCII",
+            "formula bar.",
+            "lower",
+            "Speaker",
+            "browser",
+            "shutdown",
+            "operate the device which inputs and outputs data from the computer",
+            "shutdown",
+            "smart keys",
+            "super",
+            "Displayable.",
+            "Mouse",
+            "A Government website",
+            "Stabilizer",
+            "Regular blowing of dust",
+            "making the computer works faster",
+            "browser",
+            "Compact  disc Rewind Wide",
+            "",
+            "",
+            ""
+        ],
+        [
+            "2020-09-10T15:35:37.514Z",
+            3,
+            "Israeltown",
+            "0011223359",
+            "Windows XP",
+            "System",
+            "CPU",
+            "title bar",
+            "middle",
+            "Monitor",
+            "browser",
+            "OK",
+            "obtains a degree in computer science and its related fields of study",
+            "OK",
+            "smart keys",
+            "personal",
+            "Systematic display",
+            "Mouse",
+            "Liverpool FC supporters",
+            "Stabilizer",
+            "Making sure it doesn’t heat",
+            "slowing down the computer system performance",
+            "browser",
+            "Compact  disc Rewind Wide",
+            "",
+            "",
+            ""
+        ]
+    ]
+}

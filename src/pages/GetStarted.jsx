@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import grades from '../assets/images/grades.svg';
 import arrowdown from '../assets/features/arrowdown.png';
@@ -9,10 +9,11 @@ const GetStarted = () => {
   const [userType, setUserType] = useState('individual');
 
   const toTitle = word => word[0].toUpperCase() + word.slice(1);
+  const navigate = useNavigate();
 
   const submitForm = e => {
     e.preventDefault()
-    window.location.href = 'https://analysis.preptimeanalytics.com/picker';
+    navigate('/picker')
   }
 
   const toggleDropdown = _ => {
