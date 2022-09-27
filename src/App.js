@@ -117,9 +117,9 @@ function App() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   let location = useLocation();
 
-  useEffect(() => {
-    console.log(location.pathname)
-  }, [location])
+  // useEffect(() => {
+  //   console.log('from base of the app:\n', process.env)
+  // }, [location])
 
   return (
     <div className="relative font-dm-sans w-full">

@@ -322,7 +322,7 @@ label[for="subscribe"]::after {
 }
 
 .w-gdrive {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .g-upload-content {
@@ -354,6 +354,10 @@ label[for="subscribe"]::after {
                 -1px -1px 1px rgba(0,0,0,.05);
 }
 
+ul.temp-list {
+    margin: 0;
+}
+
 .checklabel {
     display: inline-block;
     margin-left: 18px;
@@ -370,8 +374,7 @@ label[for="subscribe"]::after {
     content: '';
     position: absolute;
     left: -22px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 5px;
     width: 17px;
     height: 17px;
     border: 2px solid #ff3f5f;
@@ -384,8 +387,8 @@ label[for="subscribe"]::after {
     content: '';
     position: absolute;
     left: -18.5px;
-    top: 50%;
-    transform: translateY(-50%) scale(0);
+    top: 8.5px;
+    transform: scale(0);
     width: 10px;
     height: 10px;
     background: #ff3f5f;
@@ -395,11 +398,103 @@ label[for="subscribe"]::after {
 }
 
 .upload-option:checked + label::after {
-    transform: translateY(-50%) scale(1);
+    transform: scale(1);
 }
 
 .local-upload {
     margin-bottom: 30px;
+}
+
+.l-upload-content {
+    margin-top: 20px;
+}
+
+.uploads-sect {
+    max-width: 700px;
+    margin-inline: auto;
+}
+
+.l-upload-content .note {
+    margin-bottom: 20px;
+}
+
+.upload-blk {
+    padding: 30px;
+    border: 1px dashed rgba(0,0,0,.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all .3s ease;
+}
+
+.upload-blk.disabled {
+    cursor: not-allowed;
+    opacity: .5;
+    pointer-events: none;
+}
+
+.upload-blk.drag-over {
+    border: 2px dashed #ff3f5f;
+}
+
+.up-blk-title {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.btn-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.btn-upload .fas {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: rgba(0,0,0,.4);
+    transition: color .3s ease;
+}
+
+.btn-upload span.bold {
+    font-size: 16px;
+    transition: color .3s ease;
+}
+
+.btn-upload:hover span.bold,
+.btn-upload:hover .fas {
+    color: #ff3f5f;
+}
+
+.tiny-txt {
+    font-size: 12px;
+    color: rgba(0,0,0,.6);
+}
+
+.l-upl-filename {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    padding: 7px 12px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,.1) inset,
+                -5px -5px 5px rgba(0,0,0,.1) inset;
+    border-radius: 20px;
+}
+
+.l-upl-filename .cl-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #ff3f5f;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
 .form-fields .input-grid {
@@ -787,6 +882,35 @@ button.run:active {
 
     .local-upload {
         margin-bottom: 60px;
+    }
+
+    .upload-blk {
+        padding: 40px;
+    }
+
+    .upload-blk:first-of-type {
+        margin-bottom: 40px;
+    }
+
+    .btn-upload .fas {
+        font-size: 37px;
+    }
+
+    .btn-upload {
+        margin-bottom: 15px;
+    }
+
+    .btn-upload span.bold {
+        font-size: 20px;
+    }
+
+    .up-blk-title {
+        font-size: 20px;
+    }
+
+    .tiny-txt,
+    .filename {
+        font-size: 14px;
     }
 
     .done-analyzing h2 {

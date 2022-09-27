@@ -9,7 +9,6 @@
 
 .table-wrapper {
     height: 100%;
-    /* max-height: 80vh; */
     width: 100%;
     overflow-x: auto;
     margin-bottom: 8px;
@@ -23,7 +22,8 @@
 th {
     color: #3c3c3c;
     text-align: left;
-    max-width: 25vw;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
 th, td {
@@ -33,6 +33,28 @@ th, td {
 
 tr {
     border-bottom: 1px solid rgba(0,0,0,.1);
+    white-space: nowrap;
+}
+
+.sort-ctrls {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 6px;
+    width: 15px;
+    height: 5px;
+}
+
+.sort-ctrls .fas {
+    height: 40%;
+    transition: color .3s ease;
+}
+
+th[data-sort="asc"] .fas.fa-sort-up,
+th[data-sort="desc"] .fas.fa-sort-down {
+    color: #ff3f5f;
 }
 
 .tb-controls {

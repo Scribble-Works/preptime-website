@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import AttachmentList from '../components/AttachmentList'
 import Loader from '../components/Loader'
 import driveIcon from '../assets/images/drive-icon.png'
+import readXlsxFile from 'read-excel-file'
 
 export default function Picker() {
 
@@ -18,6 +19,17 @@ export default function Picker() {
     const [subject, setSubject] = useState('');
     const [academicYear, setAcademicYear] = useState('');
     const [reportClass, setReportClass] = useState('');
+    const [questionsDataFile, setQuestionsDataFile] = useState('');
+    const [responsesDataFile, setResponsesDataFile] = useState('');
+    const [readyToAnalyze, setReadyToAnalyze] = useState(false);
+
+    const [dataMatrix, setDataMatrix] = useState([]);
+    const [questionsData, setQuestionsData] = useState([]);
+    const [headerRowIndex, setHeaderRowIndex] = useState(0);
+    const [optionsCount, setOptionsCount] = useState(4);
+    const [seperator, setSeperator] = useState(',');
+    const [rowStart, setRowStart] = useState(0);
+    const [rowStop, setRowStop] = useState(null);
 
     const developerKey = process.env.REACT_APP_GOOGLE_API_KEY;
     const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -42,7 +54,7 @@ export default function Picker() {
     };
 
     const handleAuthResult = async authResult => {
-        // console.log(authResult)
+        // console.log(process.env, authResult)
         if (authResult && authResult.access_token) {
             setAuthToken(authResult.access_token)
         }
@@ -156,28 +168,60 @@ export default function Picker() {
                         }
                     } else if (data.result.response.result) {
                         const res = JSON.parse(data.result.response.result);
-                        // vm.isRunningAnalysis = true;
-                        // setReportUrl(res.respURL)
-                        // vm.isDoneAnalysis = true;
-                        // window.open(vm.reportUrl, "_blank");
-                        const { fetchData } = res;
-                        // console.log(JSON.parse(res.fetchOutput))
-
-                        fetch("http://localhost:5000/api/scribbleworks-demoresponses", {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(fetchData)
-                        })
-                        .then(res => res.json())
-                        .then(data => {
-                            console.log(data)
-                            setReportId(data._id)
-                            setAnalysisDone(true)
-                        })
+                        // console.log(res)
+                        const { _id, fetchOutput, fetchData } = res;
+                        console.log(JSON.parse(fetchOutput), fetchData)
+                        setReportId(_id)
+                        setAnalysisDone(true)
                     }
                 })
+            })
+
+        } catch (err) {
+            console.log('An error occured whilst analysing your data\n', err.message)
+        }
+    }
+
+    const sendData = _ => {
+        if (fieldEmpty()) {
+            alert('Please make sure you fill out the details of your analysis report before you run the analysis!')
+            return;
+        }
+        setAnalysing(true)
+        try {
+            let meta = {
+                collectsEmail: false,
+                schoolName: schoolName,
+                subject: subject,
+                class: reportClass,
+                academicYear: academicYear,
+                sheetId: '',
+                reportDate: new Date().toISOString()
+            };
+
+            let req = {
+                created_at: new Date().toISOString(),
+                metaData: meta,
+                sheet_id: '',
+                title: `${meta.subject} (Responses)`,
+                dataMatrix: dataMatrix,
+                questions: questionsData
+            };
+
+            // const url = process.env.REACT_APP_API_URL;
+            const url = 'http://localhost:5000';
+            fetch(`${url}/api/scribbleworks-demoresponses`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(req)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setReportId(data._id)
+                setAnalysisDone(true)
             })
 
         } catch (err) {
@@ -210,9 +254,143 @@ export default function Picker() {
         navigate(path)
     }
 
-    // useEffect(_ => {
-    //     console.log(uploadOption)
-    // }, [uploadOption])
+    const uploadFile = fid => {
+        const fileEl = document.getElementById(fid);
+        fileEl.click()
+    }
+
+    const readFile = e => {
+        if (e.target.files.length === 0)
+            return;
+        const file = e.target.files[0];
+        const id = e.target.id;
+        if (id === 'ques-file') {
+            setQuestionsDataFile(file.name)
+            handleFile(file, 'questions')
+        } else if (id === 'res-file') {
+            setResponsesDataFile(file.name)
+            handleFile(file, 'responses')
+        }
+    }
+
+    // const extractQuestionsData = data => {
+
+    // }
+
+    const parseCSVResponseData = data => {
+        // console.log(questionsData)
+        const regex = new RegExp(`(\\s*"[^"]+"\\s*|\\s*[^${seperator}]+|${seperator})(?=${seperator}|$)`, 'g');
+        const dataLineArray = data.split('\n').map(line => line.trim());
+        // console.log('Data before been parsed:', dataLineArray)
+        let header = dataLineArray[0].split(',').slice(0,4);
+        let dataArray = dataLineArray.slice(1, dataLineArray.length).map(line => {
+            if (line === '') return;
+            const row = line.match(regex).map(val => val.trim())
+            row[1] = row[1].indexOf('/') >= 0 ? Number(row[1].split('/')[0].trim()) : Number(row[1].trim());
+            // console.log('responses:', row)
+            return row;
+        })
+        const questionTitles = [ ...questionsData.slice(2) ].map(ques => ques.title);
+        header = [ ...header, ...questionTitles ];
+        dataArray.unshift(header)
+        dataArray = dataArray.filter(arr => arr !== undefined);
+        setDataMatrix(dataArray)
+        console.log(dataArray)
+    }
+
+    const parseCSVQuestionsData = data => {
+        // console.log(data)
+        const regex = new RegExp(`(\\s*"[^"]+"\\s*|\\s*[^${seperator}]+|${seperator})(?=${seperator}|$)`, 'g');
+        const dataLineArray = data.split('\n').map(line => line.trim());
+        let dataArray = dataLineArray.slice(0, dataLineArray.length - 1).map(line => {
+            const row = line.match(regex).map(val => val.trim());
+            // console.log('questions:', row)
+            return row;
+        })
+        return parseExcelQuestionsData(dataArray)
+    }
+
+    const parseExcelQuestionsData = data => {
+        // console.log('before parsing data', data)
+        let parsedData = [
+            { id: Math.round(Math.random() * 1000), type: 'TEXT', choices: null },
+            { id: Math.round(Math.random() * 1000), type: 'TEXT', choices: null }
+        ];
+
+        const rowHeader = data[headerRowIndex];
+        for (let i = 0; i < data.slice(1).length; i++) {
+            const rowArray = rowHeader[0] == null || rowHeader[0] == '' ? [ ...data[i + 1].slice(1) ] : [ ...data[i + 1] ];
+            const answer = rowArray[rowArray.length - 2];
+            const points = rowArray[rowArray.length - 1];
+            let choices = rowArray.slice(2, 2 + optionsCount).map(opt => {
+                return {
+                    value: opt,
+                    isCorrectAnswer: opt === answer
+                }
+            });
+            parsedData.push({
+                id: Number(rowArray[0]),
+                title: rowArray[1],
+                choices: choices,
+                points: Number(points),
+                answer: '',
+                index: i + 1,
+                type: 'MULTIPLE_CHOICE'
+            });
+        }
+        // console.log('after parsing data', parsedData)
+        return parsedData
+    }
+
+    const handleFile = async (file, type) => {
+        const fileType = file.type.split('/')[1];
+        if (fileType.indexOf('.sheet') >= 0) {
+            const fileContent = await readXlsxFile(file);
+            // console.log(fileContent)
+            if (type === 'responses') {
+                setDataMatrix(fileContent)
+            } else {
+                const questions = parseExcelQuestionsData(fileContent);
+                setQuestionsData(questions)
+            }
+        } else {
+            const reader = new FileReader();
+            reader.onload = ev => {
+                const fileContent = ev.target.result;
+                if (type === 'responses') {
+                    parseCSVResponseData(fileContent)
+                } else {
+                    const questions = parseCSVQuestionsData(fileContent)
+                    setQuestionsData(questions)
+                }
+            }
+            reader.readAsText(file)
+        }
+    }
+
+    const clearQuestions = _ => {
+        setQuestionsData([])
+        setQuestionsDataFile('')
+    }
+
+    const clearResponses = _ => {
+        setDataMatrix([])
+        setResponsesDataFile('')
+    }
+
+    useEffect(_ => {
+        if (uploadOption === 'google') {
+            if (tempAttachments.length > 0)
+                setReadyToAnalyze(true)
+            else
+                setReadyToAnalyze(false)
+        } else if (uploadOption === 'local') {
+            if (questionsDataFile != '' && responsesDataFile != '')
+                setReadyToAnalyze(true)
+            else
+                setReadyToAnalyze(false)
+        }
+    }, [uploadOption, tempAttachments, questionsDataFile, responsesDataFile])
 
     return (
         <div>
@@ -244,16 +422,56 @@ export default function Picker() {
                                     </li>
                                     <li className="local-upload">
                                         <input type="checkbox" id="lDrive" className="upload-option" value="local" checked={uploadOption === 'local'} onChange={changeOption} />
-                                        <label htmlFor="lDrive" className='checklabel'>
+                                        <label htmlFor="lDrive" className='checklabel for-ldrive'>
                                             <span className="picker-title bold">Upload CSV/Excel from Local Drive</span>
                                         </label>
                                         <div className="l-upload-content">
-
+                                            <p className="note">For the analysis to be generated successfully, the data contained in your questions and responses csv/excel files is expected to be in the same format as specified in the file templates.</p>
+                                            <div className="uploads-sect">
+                                                <p className="up-blk-title bold">Questions:</p>
+                                                <div className="upload-blk up-questions">
+                                                    <a className="btn-upload" onClick={_ => uploadFile('ques-file')}>
+                                                        <i className="fas fa-file-alt"></i>
+                                                        <span className="bold">Select a CSV/Excel file to upload</span>
+                                                        <span className="tiny-txt">or drag and drop it here</span>
+                                                        <input type="file" id="ques-file" hidden accept=".csv,.xlsx, .xls, .tsv, .txt" onChange={readFile} />
+                                                    </a>
+                                                    {
+                                                        questionsDataFile ? (
+                                                            <p className="l-upl-filename">
+                                                                <span>{ questionsDataFile }</span>
+                                                                <span className="cl-btn" onClick={clearQuestions}>
+                                                                    <i className="fas fa-times"></i>
+                                                                </span>
+                                                            </p>
+                                                        ) : null
+                                                    }
+                                                </div>
+                                                <p className="up-blk-title bold">Responses:</p>
+                                                <div className={ `upload-blk up-response ${questionsData.length === 0 ? 'disabled' : ''}`}>
+                                                    <a className="btn-upload" onClick={_ => uploadFile('res-file')}>
+                                                        <i className="fas fa-file-alt"></i>
+                                                        <span className="bold">Select a CSV/Excel file to upload</span>
+                                                        <span className="tiny-txt">or drag and drop it here</span>
+                                                        <input type="file" id="res-file" hidden accept=".csv,.xlsx, .xls, .tsv, .txt" onChange={readFile} />
+                                                    </a>
+                                                    {
+                                                        responsesDataFile ? (
+                                                            <p className="l-upl-filename">
+                                                                <span>{ responsesDataFile }</span>
+                                                                <span className="cl-btn" onClick={clearResponses}>
+                                                                    <i className="fas fa-times"></i>
+                                                                </span>
+                                                            </p>
+                                                        ) : null
+                                                    }
+                                                </div>
+                                            </div>
                                         </div>
                                     </li>
                                 </ul>
                                 {
-                                    tempAttachments.length > 0 ? (
+                                    readyToAnalyze ? (
                                         <>
                                             <div className="form-fields">
                                                 <h2 className="step-title">{ uploadOption === 'local' ? 'Step 3' : 'Step 2'}: Fill out the details of your analysis report.</h2>
@@ -276,10 +494,19 @@ export default function Picker() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="btn-container">
-                                                <h2 className="step-title last-step">{ uploadOption === 'local' ? 'Step 4' : 'Step 3'}</h2>
-                                                <button className="run" onClick={callScriptFunction}>Run Analysis!</button>
-                                            </div>
+                                            {
+                                                uploadOption === 'google' ? (
+                                                    <div className="btn-container">
+                                                        <h2 className="step-title last-step">Step 3</h2>
+                                                        <button className="run" onClick={callScriptFunction}>Run Analysis!</button>
+                                                    </div>
+                                                ) : (
+                                                    <div className="btn-container">
+                                                        <h2 className="step-title last-step">Step 4</h2>
+                                                        <button className="run" onClick={sendData}>Run Analysis!</button>
+                                                    </div>
+                                                )
+                                            }
                                         </>
                                     ) : null
                                 }

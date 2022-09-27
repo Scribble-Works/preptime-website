@@ -1,0 +1,18 @@
+version: '2.10.2'
+
+services:
+  # Web Services
+  web:
+    build: .
+    container_name: preptimeAnalytics
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - REACT_APP_STRAPI_BASE_URI=${REACT_APP_STRAPI_BASE_URI}
+      - REACT_APP_GOOGLE_API_KEY=${REACT_APP_GOOGLE_API_KEY}
+      - REACT_APP_GOOGLE_CLIENT_ID=${REACT_APP_GOOGLE_CLIENT_ID}
+      - REACT_APP_GOOGLE_SCRIPT_DEPLOYMENT_ID=${REACT_APP_GOOGLE_SCRIPT_DEPLOYMENT_ID}
+      - REACT_APP_SCRIPT_URL=${REACT_APP_SCRIPT_URL}
+      - REACT_APP_API_URL=${REACT_APP_API_URL}

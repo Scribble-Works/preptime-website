@@ -14,7 +14,6 @@ import {
     Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { appContext } from '../context';
 
 ChartJS.register(
     CategoryScale,
@@ -69,17 +68,18 @@ export default function Analysis() {
             { text: "Discrimination", accessor: "discrimination" }
         ]
     })
-
-    let chartUi = null;
     
     useEffect(_ => {
         ;(async _ => {
             // console.log(context)
             try {
                 // Load analysis
-                const res = await axios.get(`http://localhost:5000/api/scribbleworks-demoresponses/${id}`);
+                // const url = process.env.REACT_APP_API_URL;
+                const url = 'http://localhost:5000';
+                const res = await axios.get(`${url}/api/scribbleworks-demoresponses/${id}`);
                 const result = {...res.data};
-                // console.log(result)
+                // const result  = await (await fetch(`${url}/api/scribbleworks-demoresponses/${id}`)).json();
+                console.log(result)
                 setResponseData(result)
                 setMetaData(result.metaData)
                 let dataResponses = result.responses;
@@ -107,27 +107,28 @@ export default function Analysis() {
                             dataResponses.length - getUnansweredTotal(question.respFreq), // ToDo: This should be sum of ABCDU and should equal all submissions
                             total: getUnansweredTotal(question.respFreq)+(dataResponses.length - getUnansweredTotal(question.respFreq)), // adding the total computation to the fxn for calculating U
                             itemDifficulty: getItemDifficulty(
-                            question.answer,
-                            question.respFreq,
-                            dataResponses.length
-                            ),
-                            discrimination: getDiscrimination(
-                            getItemDifficulty(
                                 question.answer,
                                 question.respFreq,
                                 dataResponses.length
-                            )
+                            ),
+                            discrimination: getDiscrimination(
+                                getItemDifficulty(
+                                    question.answer,
+                                    question.respFreq,
+                                    dataResponses.length
+                                )
                             )
                         };
                         let quesObj = { ...dataQues[i] };
-                        quesObj.respFreqValue = questionAnalysisDataPoint.itemDifficulty;
+                        quesObj.respFreqValue = (100 - questionAnalysisDataPoint.itemDifficulty).toFixed(2);
                         quesObj.questionNumber = questionAnalysisDataPoint.questionNumber;
+                        // console.log(quesObj)
                         quesArray.push(quesObj);
                         analysisTb.push(questionAnalysisDataPoint)
                         setQuestions(quesArray)
                         setAnalysisTable(analysisTb)
                         // Get frequently missed questions
-                        if (quesObj.respFreqValue < 50)
+                        if (quesObj.respFreqValue > 50)
                             missedQues.push(quesObj);
                     }
                 }
@@ -200,7 +201,7 @@ export default function Analysis() {
                                     {`Q${ques.questionNumber}) ${ques.title}`}
                                 </p>
                                 <p className="pct bold">
-                                    - {ques.respFreqValue}%
+                                    {ques.respFreqValue}%
                                 </p>
                             </div>
                         )
@@ -226,9 +227,12 @@ export default function Analysis() {
         let output = [];
         questions.forEach((question, index) => {
             if (question.type === "MULTIPLE_CHOICE") {
-            if (question.respFreq[String(question.answer)]) {
-                output.push(question.respFreq[String(question.answer)]);
-            }
+                if (question.respFreq[String(question.answer)]) {
+                    output.push(question.respFreq[String(question.answer)]);
+                } else {
+                    output.push(0)
+                    // console.log(question, question.respFreq[String(question.answer)])
+                }
             }
         });
         return output;
@@ -348,11 +352,11 @@ export default function Analysis() {
                             </div>
                             <div className="sect-title">
                                 <h1>Analysis of Answers</h1>
-                                <Table columns={data.headers}  rows={analysisTable} />
+                                <Table tableId="table-aa" columns={data.headers}  rows={analysisTable} />
                             </div>
                             <div className="sect-title">
                                 <h1>Summary of Scores</h1>
-                                <Table columns={data.summaryHeaders}  rows={responses} />
+                                <Table tableId="table-sos" columns={data.summaryHeaders}  rows={responses} />
                             </div>
                             <div className="sect-title">
                                 <h1>Graph of Correct Scores</h1>

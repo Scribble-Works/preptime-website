@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.css'
 
 export default function Table({
+    tableId,
     columns = (_ => [])(),
     rows = (_ => [])()
 }) {
 
-    const [step, setStep] = useState(10)
+    const [step, setStep] = useState(10);
     const [currentDisplay, setCurrentDisplay] = useState(1);
+    const [sortVal, setSortVal] = useState('');
+    const [sortType, setSortType] = useState('');
 
     const changeRows = e  =>  {
         setStep(Number(e.target.value))
@@ -41,20 +44,81 @@ export default function Table({
         }
     }
 
+    const sortTable = (id, value) => {
+        const table = document.getElementById(tableId);
+        const headers = table.querySelectorAll('th');
+        headers.forEach(target => {
+            if (target.id === id) {
+                let sortAttr = target.getAttribute('data-sort');
+                if (sortAttr === '') {
+                    target.setAttribute('data-sort', 'asc')
+                    setSortType('asc')
+                    setSortVal(value)
+                } else if (sortAttr === 'asc') {
+                    target.setAttribute('data-sort', 'desc')
+                    setSortType('desc')
+                    setSortVal(value)
+                } else {
+                    target.setAttribute('data-sort', 'asc')
+                    setSortType('asc')
+                    setSortVal(value)
+                }
+            } else {
+                target.setAttribute('data-sort', '')
+            }
+        })
+    }
+
+    // useEffect(_ => {
+    //     console.log(sortType, sortVal)
+    // }, [sortType, sortVal])
+
+    const sortData = _ => {
+        if (sortType === '' || sortVal === '')
+            return rows;
+        else {
+            let sortedData;
+            if (sortType === 'asc') {
+                sortedData = rows.sort((a, b) => {
+                    if (a[sortVal] < b[sortVal])
+                        return -1;
+                    if (a[sortVal] > b[sortVal])
+                        return 1;
+                    return 0;
+                })
+            } else {
+                sortedData = rows.sort((a, b) => {
+                    if (a[sortVal] > b[sortVal])
+                        return -1;
+                    if (b[sortVal] > a[sortVal])
+                        return 1;
+                    return 0;
+                })
+            }
+            return sortedData;
+        }
+    }
+
     return (
         <div className='main-tb-container'>
             {
                 rows.length > 0  ? (
                     <>
                         <div className="table-wrapper">
-                            <table className='table'>
+                            <table className='table' id={tableId}>
                                 {
                                     columns.length > 0 ? (
                                         <thead>
                                             <tr>
                                                 {
                                                     columns.map((col, index) => (
-                                                        <th key={`col${index}`}>{col.text}</th>
+                                                        <th key={`col${index}`} onClick={_ => sortTable(`col-${index}`, col.accessor)} data-sort="" id={`col-${index}`}>
+                                                            <span>{col.text}</span>
+                                                            <span className="sort-ctrls">
+                                                                <i className="fas fa-sort-up"></i>
+                                                                <i className="fas fa-sort-down"></i>
+                                                            </span>
+                                                        </th>
                                                     ))
                                                 }
                                             </tr>
@@ -63,7 +127,7 @@ export default function Table({
                                 }
                                 <tbody>
                                     {
-                                        rows.slice((step * currentDisplay) - step, step * currentDisplay).map((row, index) => (
+                                        sortData(rows).slice((step * currentDisplay) - step, step * currentDisplay).map((row, index) => (
                                             <tr key={`row${index}`}>
                                                 {
                                                     columns.map(col => (
