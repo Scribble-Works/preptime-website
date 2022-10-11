@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import axios from 'axios';
 import Table from '../components/Table';
+import Loader from '../components/Loader'
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -28,9 +29,9 @@ ChartJS.register(
 export default function Analysis() {
 
     const { id } = useParams();
+    const  [isLoading, setLoading] = useState(true);
     const [loadedMissedQuestions, setLoadedMissedQuestions] = useState(false);
-    const [step, setStep] = useState(5);
-    const [dataloaded, setDataLoaded] = useState(false);
+    const [printState, setPrintState] = useState('none');
     const [responses, setResponses] = useState([]);
     const [responseData, setResponseData] = useState({});
     const [questions, setQuestions] = useState([]);
@@ -74,8 +75,8 @@ export default function Analysis() {
             // console.log(context)
             try {
                 // Load analysis
-                // const url = process.env.REACT_APP_API_URL;
                 const url = 'http://localhost:5000';
+                // const url = process.env.REACT_APP_API_URL;
                 const res = await axios.get(`${url}/api/scribbleworks-demoresponses/${id}`);
                 const result = {...res.data};
                 // const result  = await (await fetch(`${url}/api/scribbleworks-demoresponses/${id}`)).json();
@@ -96,10 +97,10 @@ export default function Analysis() {
                     if (question.type === "MULTIPLE_CHOICE") {
                         let questionAnalysisDataPoint = {
                             questionNumber: questionNumberOffsetCounter++,
-                            A: question.respFreq.A,
-                            B: question.respFreq.B,
-                            C: question.respFreq.C,
-                            D: question.respFreq.D,
+                            A: question.respFreq.A || 0,
+                            B: question.respFreq.B || 0,
+                            C: question.respFreq.C || 0,
+                            D: question.respFreq.D || 0,
                             answer: question.answer,
                             respFreqString: question.respFreqString,
                             nonDistractors: getNonDistractors(question.respFreqString),
@@ -176,7 +177,7 @@ export default function Analysis() {
                 })
                 setResponses(respRankOrdered)
                 // console.log(respRankOrdered, pcts, ranks)
-
+                setLoading(false)
             } catch(err) {
                 console.log('Something went wrong while fetching data:', err.message)
             }
@@ -290,6 +291,13 @@ export default function Analysis() {
         })
     }, [questions, responses])
 
+    const printReport = _ => {
+        setPrintState('printing');
+        // setTimeout(_ => {
+        //     setPrintState('done')
+        // }, 3000)
+    };
+
     return (
         <div className='report'>
             <div className="report-content">
@@ -299,12 +307,12 @@ export default function Analysis() {
                         <h3>{ responseData.title }</h3>
                     </div>
                     <div className="header-actions">
-                        <a href="#" className="hd-action">
+                        <a href="#score-summary" className="hd-action">
                             <i className="fas fa-users"></i>
                             <span>{ responses ? responses.length : null}</span>
                         </a>
-                        <a className="hd-action">
-                            <i className="fas fa-download"></i>
+                        <a className="hd-action" onClick={printReport}>
+                            <i className="fas fa-print"></i>
                         </a>
                     </div>
                 </header>
@@ -352,11 +360,11 @@ export default function Analysis() {
                             </div>
                             <div className="sect-title">
                                 <h1>Analysis of Answers</h1>
-                                <Table tableId="table-aa" columns={data.headers}  rows={analysisTable} />
+                                <Table tableId="table-aa" columns={data.headers}  rows={analysisTable} printState={printState} />
                             </div>
-                            <div className="sect-title">
+                            <div className="sect-title" id='score-summary'>
                                 <h1>Summary of Scores</h1>
-                                <Table tableId="table-sos" columns={data.summaryHeaders}  rows={responses} />
+                                <Table tableId="table-sos" columns={data.summaryHeaders}  rows={responses} printState={printState} />
                             </div>
                             <div className="sect-title">
                                 <h1>Graph of Correct Scores</h1>
@@ -368,7 +376,9 @@ export default function Analysis() {
                             }
                         </div>
                     ) : (
-                        <h1 className="loading">Loading....</h1>
+                        <div className="load-container">
+                            <Loader size={10} show={isLoading} />
+                        </div>
                     )
                 }
                 <div className="foot-note">

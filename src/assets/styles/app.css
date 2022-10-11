@@ -8,6 +8,9 @@
 
 body {
     overflow-x: hidden !important;
+    -webkit-scroll-behavior: smooth;
+    -moz-scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 .max-w-default {
@@ -401,12 +404,23 @@ ul.temp-list {
     transform: scale(1);
 }
 
+.upl-cnt {
+    overflow: hidden;
+    transition: all .3s ease-out;
+}
+
+.g-upload-content {
+    max-height: initial;
+}
+
 .local-upload {
     margin-bottom: 30px;
 }
 
 .l-upload-content {
     margin-top: 20px;
+    max-height: 0px;
+    opacity: 0;
 }
 
 .uploads-sect {
@@ -495,6 +509,187 @@ ul.temp-list {
     background-color: #ff3f5f;
     margin-left: 5px;
     cursor: pointer;
+}
+
+.dl-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1200;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all .3s ease;
+}
+
+.dl-modal.open-modal {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.dl-modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: min(100% - 20px, 500px);
+    margin-inline: auto;
+    box-shadow: 5px 5px 25px rgba(0,0,0,.4);
+    position: relative;
+    transform: translateY(50px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s cubic-bezier(.34,.17,.13,1.54) .2s;
+}
+
+.open-modal .dl-modal-content {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.dl-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+a.dl {
+    cursor: pointer;
+    color: #ff3f5f;
+    transition: color .3s ease;
+}
+
+a.dl:hover {
+    color: #d75369;
+    text-decoration: underline;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 0 7px;
+    position: relative;
+    cursor: pointer;
+}
+
+.tab::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: #ff3f5f;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .3s ease;
+}
+
+.tab.active::before {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.tab input {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.tab label {
+    cursor: pointer;
+    transition: color .3s ease;
+}
+
+.tab input:checked + label {
+    color: #ff3f5f;
+}
+
+.close-btn {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #ff3f5f;
+    color: #fff;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.dl-carousel {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.dl-carousel-content {
+    width: 300%;
+}
+
+.dl-opt {
+    float: left;
+    width: calc(100% / 3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.dl-opt .fas.fa-file-excel,
+.dl-opt .fas.fa-file-csv {
+    font-size: 40px;
+    color: rgba(0,0,0,.4);
+}
+
+.dl-opt .icon {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.dl-opt .icon::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background: rgba(0,0,0,.1);
+    border-radius: 50%;
+}
+
+.dl-text {
+    display: inline-block;
+    margin: 5px 0;
+    color: #d75369;
+    transition: color .3s ease;
+    cursor: pointer;
+}
+
+.dl-text .fas {
+    margin-right: 4px;
+}
+
+.dl-text:hover {
+    color: #ff3f5f;
+    text-decoration: underline;
 }
 
 .form-fields .input-grid {
@@ -616,6 +811,14 @@ button.run:active {
 }
 
 /* REPORT PAGE STYLING */
+.load-container {
+    width: 100%;
+    height: min(87vh, 645px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .report,
 .report-content {
     width: 100%;
@@ -672,6 +875,7 @@ button.run:active {
     font-size: 16px;
     display: inline-block;
     margin: 0 10px;
+    cursor: pointer;
 }
 
 .hd-action:first-of-type .fas {
@@ -911,6 +1115,10 @@ button.run:active {
     .tiny-txt,
     .filename {
         font-size: 14px;
+    }
+
+    .dl-title {
+        font-size: 20px;
     }
 
     .done-analyzing h2 {

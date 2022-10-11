@@ -4,16 +4,19 @@ import './index.css'
 export default function Table({
     tableId,
     columns = (_ => [])(),
-    rows = (_ => [])()
+    rows = (_ => [])(),
+    printState='none'
 }) {
 
     const [step, setStep] = useState(10);
+    const [lastStep, setLastStep] = useState(10);
     const [currentDisplay, setCurrentDisplay] = useState(1);
     const [sortVal, setSortVal] = useState('');
     const [sortType, setSortType] = useState('');
 
     const changeRows = e  =>  {
-        setStep(Number(e.target.value))
+        setLastStep(step);
+        setStep(Number(e.target.value));
     }
 
     const prevDisplay = e  => {
@@ -69,9 +72,15 @@ export default function Table({
         })
     }
 
-    // useEffect(_ => {
-    //     console.log(sortType, sortVal)
-    // }, [sortType, sortVal])
+    useEffect(_ => {
+        if (printState === 'printing') {
+            setLastStep(step);
+            setStep(rows.length);
+        } else if (printState === 'done') {
+            setStep(lastStep)
+        } else
+            return;
+    }, [printState])
 
     const sortData = _ => {
         if (sortType === '' || sortVal === '')
