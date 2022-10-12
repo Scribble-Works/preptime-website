@@ -80,7 +80,7 @@ export default function Analysis() {
                 const res = await axios.get(`${url}/api/scribbleworks-demoresponses/${id}`);
                 const result = {...res.data};
                 // const result  = await (await fetch(`${url}/api/scribbleworks-demoresponses/${id}`)).json();
-                console.log(result)
+                // console.log(result)
                 setResponseData(result)
                 setMetaData(result.metaData)
                 let dataResponses = result.responses;

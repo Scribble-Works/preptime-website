@@ -235,7 +235,7 @@ export default function Picker() {
 
     const changeOption = e => {
         setUploadOption(e.target.value)
-        console.log(e.target.value)
+        // console.log(e.target.value)
     }
 
     const focusInput = e => {
@@ -288,11 +288,11 @@ export default function Picker() {
         let header = firstLine.includes('Index Number:') ? 
         firstLine.split(',').slice(0,3) : firstLine.split(',').slice(0,2);
         header = firstLine.includes('Index Number:') ? header : [header[0], 'Index Number:', header[1]];
+        // console.log(header)
 
         let dataArray = dataLineArray.slice(1, dataLineArray.length).map(line => {
             if (line === '') return;
             let row = line.match(regex).map(val => val.trim());
-
             if (firstLine.includes('Index Number:')) {
                 row[2] = row[2].indexOf('/') >= 0 ? 
                 Number(row[2].split('/')[0].trim()) : Number(row[2].trim());
@@ -303,6 +303,7 @@ export default function Picker() {
             }
 
             row.unshift(new Date().toISOString())
+            // console.log(row)
             return row;
         })
         const questionTitles = [ ...questionsData.slice(2) ].map(ques => ques.title);
@@ -319,7 +320,7 @@ export default function Picker() {
             return nullCount < header.length;
         });
         setDataMatrix(dataArray)
-        console.log('Response data before been parsed:', dataArray)
+        // console.log('Response data after beign parsed:', dataArray)
     }
 
     const parseCSVQuestionsData = data => {
@@ -424,6 +425,10 @@ export default function Picker() {
     const restart = _ => {
         setAnalysing(false);
         setAnalysisDone(false);
+        setUploadOption('google');
+        setTempAttachments([]);
+        setQuestionsDataFile('');
+        setResponsesDataFile('');
     };
 
     const switchTab = e => {
