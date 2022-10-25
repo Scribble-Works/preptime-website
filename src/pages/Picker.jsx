@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import AttachmentList from '../components/AttachmentList'
 import Loader from '../components/Loader'
 import driveIcon from '../assets/images/drive-icon.png'
+import googleLogo from '../assets/logos/google-logo.png'
 import readXlsxFile from 'read-excel-file'
 
 export default function Picker() {
@@ -211,7 +212,7 @@ export default function Picker() {
                 questions: questionsData
             };
 
-            const url = 'http://localhost:5000';
+            // const url = 'http://localhost:5000';
             fetch(`${url}/api/scribbleworks-demoresponses`, {
                 method: 'POST',
                 headers: {
@@ -343,9 +344,22 @@ export default function Picker() {
         ['Timestamp', firstLine[0], 'Index Number:', ...firstLine.slice(1)];
 
         const newData = data.slice(1).map(row => {
-            const newRow = firstLine.includes('Index Number:') ?
-            [new Date().toISOString(), ...row] :
-            [new Date().toISOString(), row[0], 'nan', ...row.slice(1)];
+            let newRow = [ ...row ];
+            if (firstLine.includes('Index Number:')) {
+                const isNumber = typeof newRow[2] == 'number';
+                newRow[2] = !isNumber && newRow[2].indexOf('/') >= 0 ? 
+                Number(newRow[2].split('/')[0].trim()) : 
+                !isNumber && newRow[2].indexOf('/') < 0 ? 
+                Number(newRow[2].trim()) :  newRow[2];
+                newRow = [new Date().toISOString(), ...newRow];
+            } else {
+                const isNumber = typeof newRow[1] == 'number';
+                newRow[1] = !isNumber && newRow[1].indexOf('/') >= 0 ? 
+                Number(newRow[1].split('/')[0].trim()) : 
+                !isNumber && newRow[1].indexOf('/') < 0 ? 
+                Number(newRow[1].trim()) :  newRow[1];
+                newRow = [new Date().toISOString(), newRow[0], 'nan', ...newRow.slice(1)];
+            }
             return newRow;
         });
 
@@ -449,7 +463,7 @@ export default function Picker() {
             const googleUpload = document.querySelector('.g-upload-content');
             const localUpload = document.querySelector('.l-upload-content');
             const gUploadHeight = googleUpload.scrollHeight;
-            googleUpload.style.maxHeight = `${gUploadHeight}px`;
+            googleUpload.style.maxHeight = `${gUploadHeight + 10}px`;
             googleUpload.style.opacity = '1';
             localUpload.style.maxHeight = '0px';
             localUpload.style.opacity = '0';
@@ -462,7 +476,7 @@ export default function Picker() {
             const googleUpload = document.querySelector('.g-upload-content');
             const localUpload = document.querySelector('.l-upload-content');
             const localUploadHeight = localUpload.scrollHeight;
-            localUpload.style.maxHeight = `${localUploadHeight}px`;
+            localUpload.style.maxHeight = `${localUploadHeight + 10}px`;
             localUpload.style.opacity = '1';
             googleUpload.style.maxHeight = '0px';
             googleUpload.style.opacity = '0';
@@ -502,7 +516,7 @@ export default function Picker() {
         const downloadLinks = document.querySelectorAll('.dl-text');
         downloadLinks.forEach(async link => {
             const filename = link.querySelector('span').textContent;
-            const url = 'http://localhost:5000';
+            // const url = 'http://localhost:5000';
             let data = await (await fetch(`${url}/download/${filename}`)).arrayBuffer();
             let file = new File([data], filename, { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
             let fileUrl = URL.createObjectURL(file);
@@ -577,7 +591,8 @@ export default function Picker() {
                                             <div className="upload-step flex flex-col align-center">
                                                 <h2 className="step-title">Step 1: Pick a Quiz Responses File</h2>
                                                 <button className="gdrive-upload" onClick={driveIconClicked}>
-                                                    <img src={driveIcon} alt="google drive icon" width="60" height="60" />
+                                                    <img src={googleLogo} alt="google drive icon" width="25" height="25" />
+                                                    <span>Sign in with Google</span>
                                                 </button>
                                                 {
                                                     tempAttachments.length > 0 && !isAnalysing ?

@@ -75,8 +75,8 @@ export default function Analysis() {
             // console.log(context)
             try {
                 // Load analysis
-                const url = 'http://localhost:5000';
-                // const url = process.env.REACT_APP_API_URL;
+                // const url = 'http://localhost:5000';
+                const url = process.env.REACT_APP_API_URL;
                 const res = await axios.get(`${url}/api/scribbleworks-demoresponses/${id}`);
                 const result = {...res.data};
                 // const result  = await (await fetch(`${url}/api/scribbleworks-demoresponses/${id}`)).json();
